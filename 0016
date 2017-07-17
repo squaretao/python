@@ -1,0 +1,13 @@
+#0016.py
+from collections import OrderedDict
+import xlwt
+import json
+
+with open('numbers.txt', 'r') as f:
+    data=json.load(f)
+    workbook=xlwt.Workbook()
+    worksheet=workbook.add_sheet('numbers', cell_overwrite_ok=True)
+    for index, values in enumerate(data):
+        for i, value in enumerate(values):
+            worksheet.write(index, i, value)
+    workbook.save('numbers.xls')
